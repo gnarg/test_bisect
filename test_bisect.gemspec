@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = TestBisect::VERSION
   spec.authors       = ["Jon Guymon"]
   spec.email         = ["jon@newrelic.com"]
-  spec.description   = %q{toot}
-  spec.summary       = %q{toot}
+  spec.description   = %q{If a leaky test is causing an unrelated test to fail, "rake test:bisect[victim]" will search though your test suite until it finds the leaky test that is causing the victim to fail.}
+  spec.summary       = %q{Rake task to binary search through your test for leaky tests}
   spec.homepage      = ""
   spec.license       = "MIT"
 

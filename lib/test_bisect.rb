@@ -4,15 +4,21 @@ require 'rake/tasklib'
 module TestBisect
   class BisectTask < Rake::TaskLib
     attr_accessor :name
+
+    # We assume the task used to run the tests is "test" but if not,
+    # specify here
     attr_accessor :test_task_name
+
+    # We try to get the list of suspects from the test task, but they
+    # can be manually specified here
     attr_accessor :suspects
 
     # Create a test bisect task
     # if the test task which runs the tests is not "test" then specify
     # is as the second arg.
-    def initialize(name=:bisect, test_task_name=:test)
+    def initialize(name=:bisect)
       @name = name
-      @test_task_name = test_task_name
+      @test_task_name = :test
       # might as well take the last one
       ObjectSpace.each_object(Rake::TestTask) do |obj|
         @test_task = obj if obj != self
