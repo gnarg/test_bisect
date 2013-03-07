@@ -45,7 +45,7 @@ module TestBisect
       pivot = suspects.size / 2
       suspects.partition {|file| suspects.index(file) < pivot }.each do |part|
         begin
-          @test_task.test_files = part
+          @test_task.test_files = part + [victim]
           Rake::Task[@test_task_name].reenable
           Rake::Task[@test_task_name].invoke
           puts "------ PASSED -------"
